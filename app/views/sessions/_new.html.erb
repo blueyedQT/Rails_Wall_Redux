@@ -1,5 +1,9 @@
 <h1>Login</h1>
-<%= simple_form_for @user do |f| %>
-<%= f.input :email %>
-<%= f.input :password %>
+<% if @error %>
+<p class="alert-danger"><%= @error %></p>
+<% end %>
+<%= simple_form_for(:session, url: sessions_path) do |l| %>
+<%= l.input :email %>
+<%= l.input :password %>
+<%= l.button :submit, 'Login!' %>
 <% end %>

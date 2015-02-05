@@ -1,7 +1,11 @@
 <div class="row header">
 	<h1 class="col-md-8">The Wall</h1>
 	<!-- Only display the following if logged in -->
+	<% if @user %>
+	<p><%= @user %></p>
+	<% end %>
 		<h2 class="col-md-2">Welcome (NAME)</h2>
 		<!-- Link to sign off -->
-		<a class="col-md-2" href="#">Sign Off</a>
+		<!-- <a class="col-md-2" href="#">Sign Off</a> -->
+		<%= link_to('log off', signout_path) %>
 </div>

@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def create
   	@user = User.create(user_params)
   	if @user.save
-  		# sign in the user
+  		sign_in @user
   		redirect_to @user
   	else
   		flash[:errors] = @user.errors.full_messages
-  		redirect_to '/'
+  		redirect_to root_path
   	end
 
   end
