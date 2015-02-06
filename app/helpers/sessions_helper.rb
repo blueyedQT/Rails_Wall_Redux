@@ -1,6 +1,7 @@
 module SessionsHelper
 	def sign_in(user)
 		session[:user_id] = user.id
+		session[:user_name] = user.first_name
 		self.current_user = (user)
 	end
 
@@ -18,6 +19,7 @@ module SessionsHelper
 
 	def sign_out
 		session[:user_id] = nil
+		session[:user_name] = nil
 		self.current_user = nil
 	end
 

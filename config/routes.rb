@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'users#new'
   resources :users, only: [:new, :create, :show]
-  resources :sessions, only: [:_index, :new, :create, :destroy]
+  resources :sessions, only: [:index, :new, :create, :destroy]
   get '/signout' => 'sessions#destroy'
   
 
