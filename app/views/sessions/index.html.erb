@@ -2,6 +2,6 @@
 	<h1 class="col-md-8">The Wall</h1>
 	<% if session[:user_name] %>
 	<p class="col-md-2">Welcome <%= session[:user_name] %></p>
-	<%= link_to('Log Off', signout_path) %>
+	<%= link_to('Sign Off', signout_path) %>
 	<% end %>
 </div>
