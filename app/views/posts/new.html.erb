@@ -3,16 +3,3 @@
 	<%= f.input :message %>
 	<%= f.button :submit, 'Post a message' %>
 <% end %>
-<% if @posts %>
-<% @posts.each do |post| %>
-<div class="posts">
-	<%= post.message %>
-	<div class="add_message">
-		<%= simple_form_for @comment, url: '/comments/create' do |f| %>
-			<%= f.input :message %>
-			<%= f.button :submit %>
-		<% end %>
-	</div>
-</div>
-<% end %>
-<% end %>

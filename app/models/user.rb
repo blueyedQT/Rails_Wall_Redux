@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  
 	attr_accessor :password, :password_confirmation
   email_regex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 

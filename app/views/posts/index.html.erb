@@ -1,2 +1,12 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<%= render template: '/posts/new' %>
+
+<% if @posts %>
+<% @posts.each do |post| %>
+<div class="posts">
+	<%= post.message %>
+	<div class="add_message">
+		<%= render template: '/comments/new' %>
+	</div>
+</div>
+<% end %>
+<% end %>

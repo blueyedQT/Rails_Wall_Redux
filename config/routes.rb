@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
+
+
   root 'users#new'
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:index, :new, :create, :destroy]
-  resources :posts, only: [:new, :create]
+  resources :posts, only: [:index, :new, :create]
+  resources :comments, only: [:new, :create]
   get '/signout' => 'sessions#destroy'
   
+  #   get 'comments/new'
+
+  # get 'comments/create'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
