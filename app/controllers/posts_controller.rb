@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.reverse
+    @comment = Comment.new
   end
 
   def new
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
   	else 
   		flash[:errors] = @post.errors.full_messages
   	end
-  	redirect_to '/posts/new'
+  	redirect_to posts_path
   end
 
   def show

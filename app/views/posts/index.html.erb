@@ -1,11 +1,15 @@
-<%= render template: '/posts/new' %>
+<%= render template: new_post_path %>
 
 <% if @posts %>
 <% @posts.each do |post| %>
 <div class="posts">
 	<%= post.message %>
 	<div class="add_message">
-		<%= render template: '/comments/new' %>
+		<%= simple_form_for @comment do |f| %>
+		<%= f.input :post, as: :hidden, input_html: { value: post.id } %>
+			<%= f.input :message %>
+			<%= f.button :submit %>
+		<% end %>
 	</div>
 </div>
 <% end %>
