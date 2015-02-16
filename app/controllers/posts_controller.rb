@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @posts = Post.all.reverse
+    @comments = Comment.all
     @comment = Comment.new
   end
 

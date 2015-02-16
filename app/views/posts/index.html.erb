@@ -1,16 +1,25 @@
 <%= render template: new_post_path %>
 
 <% if @posts %>
-<% @posts.each do |post| %>
-<div class="posts">
-	<%= post.message %>
-	<div class="add_message">
-		<%= simple_form_for @comment do |f| %>
-		<%= f.input :post, as: :hidden, input_html: { value: post.id } %>
-			<%= f.input :message %>
-			<%= f.button :submit %>
-		<% end %>
-	</div>
-</div>
-<% end %>
+	<% @posts.each do |post| %>
+		<div class="posts">
+			<%= post.message %>
+			<% if @comments %>
+				<% @comments.each do |comment| %>
+					<% if comment.post_id == post.id %>
+						<div class="comments">
+							<p><%= comment.message %></p>
+						</div>
+					<% end %>
+				<% end %>
+			<% end %>
+			<div class="add_message">
+				<%= simple_form_for @comment do |f| %>
+				<%= f.input :post, as: :hidden, input_html: { value: post.id } %>
+					<%= f.input :message %>
+					<%= f.button :submit %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
 <% end %>
