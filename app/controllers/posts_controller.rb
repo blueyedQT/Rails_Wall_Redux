@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   def index
+    @post = Post.new
+    @posts = Post.all
   end
 
   def new
-  	@post = Post.new
   	@posts = Post.all
   end
 
