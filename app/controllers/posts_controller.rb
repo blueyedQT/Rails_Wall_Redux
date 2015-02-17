@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
+  before_action :require_signed_in
+
   def index
     @post = Post.new
     @posts = Post.all.reverse
     @comments = Comment.all
     @comment = Comment.new
+    @errors = flash[:errors]
   end
 
   def new

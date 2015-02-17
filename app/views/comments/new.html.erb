@@ -1,7 +1,0 @@
-<%= simple_form_for @comment do |f| %>
-	<%= f.input :message %>
-	<%= f.button :submit %>
-<% end %>
-
-
-<%= render template: new_comment_path, local: { post_id: post.id } %>

@@ -1,23 +1,32 @@
+<% if @errors %>
+	<% @errors.each do |error| %>
+		<p class="alert-danger"><%= error %></p>
+	<% end %>
+<% end %>
+
+<h1>Post a message</h1>
 <%= render template: new_post_path %>
 
 <% if @posts %>
 	<% @posts.each do |post| %>
 		<div class="posts">
-			<%= post.message %>
+			<h3><%= post.user.first_name %> <%= post.user.last_name %> - <%= post.created_at.strftime("%B %d, %Y") %></h3>
+			<p><%= post.message %></p>
 			<% if @comments %>
 				<% @comments.each do |comment| %>
 					<% if comment.post_id == post.id %>
-						<div class="comments">
+						<div class="comments col-md-offset-1">
+							<h4><%= comment.user.first_name %> <%= comment.user.last_name %> - <%= comment.created_at.strftime("%B %d, %Y") %></h4>
 							<p><%= comment.message %></p>
 						</div>
 					<% end %>
 				<% end %>
 			<% end %>
-			<div class="add_message">
+			<div class="add_message col-md-offset-1">
 				<%= simple_form_for @comment do |f| %>
 				<%= f.input :post, as: :hidden, input_html: { value: post.id } %>
-					<%= f.input :message %>
-					<%= f.button :submit %>
+					<%= f.input :message, required: false, label: false %>
+					<%= f.button :submit, 'Add Comment', class: 'btn-success col-md-offset-10' %>
 				<% end %>
 			</div>
 		</div>

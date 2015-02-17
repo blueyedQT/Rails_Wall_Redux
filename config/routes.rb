@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-
-
   root 'users#new'
   resources :users, only: [:new, :create, :show]
-  resources :sessions, only: [:index, :new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :posts, only: [:index, :new, :create]
   resources :comments, only: [:new, :create]
   get '/signout' => 'sessions#destroy'
+  get '/wall' => 'posts#index'
   
   #   get 'comments/new'
 
