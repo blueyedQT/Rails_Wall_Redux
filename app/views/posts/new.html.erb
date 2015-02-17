@@ -1,0 +1,4 @@
+<%= simple_form_for @post do |f| %>
+	<%= f.input :message, required: false, label: false %>
+	<%= f.button :submit, 'Post a message', class: 'btn-primary col-md-offset-10' %>
+<% end %>

@@ -2,20 +2,24 @@
 	<div class="col-md-6">
 		<h1>Register</h1>
 		<% if @errors %>
-		<% @errors.each do |error| %>
-		<p class="alert-danger"><%= error %></p>
-		<% end %>
+			<% @errors.each do |error| %>
+				<p class="alert-danger"><%= error %></p>
+			<% end %>
 		<% end %>
 		<%= simple_form_for @user do |f| %>
-		<%= f.input :first_name %>
-		<%= f.input :last_name %>
-		<%= f.input :email %>
-		<%= f.input :password %>
-		<%= f.input :confirm_password %>
-		<%= f.button :submit %>
+			<%= f.input :first_name, required: false %>
+			<%= f.input :last_name, required: false %>
+			<%= f.input :email, required: false %>
+			<%= f.input :password, required: false %>
+			<%= f.input :password_confirmation, required: false %>
+			<%= f.button :submit, 'Register!', class: 'btn-primary' %>
 		<% end %>
 	</div>
 	<div class="col-md-6">
+		<h1>Login</h1>
+		<% if @error %>
+			<p class="alert-danger"><%= @error %></p>
+		<% end %>
 		<%= render '/sessions/new' %>
 	</div>
 </div>

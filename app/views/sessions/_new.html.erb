@@ -1,9 +1,5 @@
-<h1>Login</h1>
-<% if @error %>
-<p class="alert-danger"><%= @error %></p>
-<% end %>
 <%= simple_form_for(:session, url: sessions_path) do |l| %>
-<%= l.input :email %>
-<%= l.input :password %>
-<%= l.button :submit, 'Login!' %>
+<%= l.input :email, required: false %>
+<%= l.input :password, required: false %>
+<%= l.button :submit, 'Login!', class: 'btn-primary' %>
 <% end %>

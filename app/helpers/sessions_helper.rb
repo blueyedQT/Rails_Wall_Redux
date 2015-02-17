@@ -28,6 +28,12 @@ module SessionsHelper
 	end
 
 	def deny_access
-		redirect_to signin_path, notice: "Please sign in to access this page."
+		redirect_to root_path, notice: "Please sign in to access this page."
+	end
+
+	def require_signed_in
+		if !signed_in?
+			deny_access
+		end
 	end
 end

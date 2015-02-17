@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   		redirect_to root_path
   	else
   		sign_in user
-  		redirect_to '/users/1'
+  		redirect_to posts_path
   	end
   end
 

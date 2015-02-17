@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
   	@errors = flash[:errors]
+    @error = flash[:error]
   	@user = User.new
   end
 
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   	@user = User.create(user_params)
   	if @user.save
   		sign_in @user
-  		redirect_to @user
+  		redirect_to posts_path
   	else
   		flash[:errors] = @user.errors.full_messages
   		redirect_to root_path

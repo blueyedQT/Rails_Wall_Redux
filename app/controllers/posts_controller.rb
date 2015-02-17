@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
+  before_action :require_signed_in
+
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.reverse
+    @comments = Comment.all
+    @comment = Comment.new
+    @errors = flash[:errors]
   end
 
   def new
@@ -15,7 +20,7 @@ class PostsController < ApplicationController
   	else 
   		flash[:errors] = @post.errors.full_messages
   	end
-  	redirect_to '/posts/new'
+  	redirect_to posts_path
   end
 
   def show
